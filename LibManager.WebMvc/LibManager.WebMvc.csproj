@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\LibManagerMVC.Services\LibManagerMVC.Services.csproj" />
+    <ProjectReference Include="..\LibManagerMVC.Models\LibManagerMVC.Models.csproj" />
+    <ProjectReference Include="..\LibManagerMVC.Data\LibManagerMVC.Data.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>
