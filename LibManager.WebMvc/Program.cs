@@ -1,7 +1,25 @@
+using LibManagerMVC.Data;
+using LibManagerMVC.Models.AutoMap;
+using LibManagerMVC.Services.BookServices;
+using LibManagerMVC.Services.AuthorServices;
+using LibManagerMVC.Services.LoanServices;
+using Microsoft.EntityFrameworkCore;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add connection string and DbContext setup
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<LibraryManagerDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<ILoanService, LoanService>();
+builder.Services.AddAutoMapper(typeof(BookMapProfile));
+builder.Services.AddAutoMapper(typeof(AuthorMapProfile));
 
 var app = builder.Build();
 
