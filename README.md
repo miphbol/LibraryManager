@@ -1,0 +1,1 @@
+Library Manager is a library management system by which users can add, view, edit, remove Books and their respective Authors and Loans. It is meant to track which books are currently lent out and when they are due for return. Within this program there are a few seeded examples.

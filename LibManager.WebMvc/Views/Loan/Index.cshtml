@@ -1,0 +1,45 @@
+@model List<LibManagerMVC.Models.Loan.LoanIndexViewModel>
+@{
+    ViewData["Title"] = "Loan Index";
+}
+
+<div class="d-flex flex-wrap justify-content-between align-items-baseline">
+    <h1 class="display-4">All Loans</h1>
+    <a asp-controller="Product" asp-action="Create" class="btn btn-sm btn-success">Add a Loan</a>
+</div>
+
+@if (TempData["ErrorMsg"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>ERROR:</strong> @TempData["ErrorMsg"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<table class="table table-striped border">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>LoanDate</th>
+            <th>ReturnDate</th>
+            <th>BookID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var loan in Model)
+        {
+            <tr>
+                <td>@loan.Id</td>
+                <td>@loan.LoanDate</td>
+                <td>@loan.ReturnDate</td>
+                <td>@loan.BookID</td>
+            
+                <td class="text-end">
+                    <a asp-action="Details" asp-route-id="@loan.Id" class="btn btn-sm btn-primary">Details</a>
+                    <a asp-action="Edit" asp-route-id="@loan.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@loan.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
